@@ -233,6 +233,7 @@ function Hello()
   echo "Hello " . name
   let l:name2 = "Peach"
   echo "hi " . name2
+endfunction
 ```
 
 [.footer: `:help local-variable`]
@@ -248,7 +249,7 @@ example.
 
 ```vim
 let s:score = 0
-function s:HomeRun()
+function HomeRun()
   let s:score += 1
 endfunction
 ```
@@ -300,7 +301,7 @@ endfunction
 
 [.footer: `:help function, :help E124`]
 
-^ Desribe function
+^ Describe function
 
 ---
 
@@ -370,14 +371,14 @@ call Test("Mickey") " => Cannot change read-only variable 'a:name'
 # Function arguments
 
 ```vim
-call Foo("dopey", "sneezy", "bashful, "doc", "grumpy", "happy", "sleepy")
+call Foo("dopey", "sneezy", "bashful", "doc", "grumpy", "happy", "sleepy")
 
 function Foo(bar, baz, ...)
-  echo a:bar " => dopey
-  echo a:baz " => sneezy
-  echo a:0 " => 5
-	echo a:1 " => bashful
-	echo a:000[0] => bashful
+  echo a:bar "      => dopey
+  echo a:baz "      => sneezy
+  echo a:0 "        => 5
+	echo a:1 "      => bashful
+	echo a:000[0] " => bashful
 	echo ""
   for s in a:000
     echon ' ' . s
@@ -579,15 +580,25 @@ command to the scripts prefix, allowing you to call script local functions.
 
 ---
 
+# Library Functions
+
+From `janko-m/vim-test/autoload/test/ruby/rails.vim`
+
+```vim
+function! test#ruby#rails#test_file(file)
+```
+
+---
+
 # Line Commands
 Vim has a variety of commands for accessing and working with lines:
 
 - `getline('.')`
 - `match(getline('.'), '\%(Hello\|Hi\)'`
 - `search('World')`
-- `searchpair('if', '', 'end')
+- `searchpair('if', '', 'end')`
 - `line('.')`
-- cursor(1,1)
+- `cursor(1,1)`
 
 [.footer: `:help getline, :help line, :help match, :help search, :help searchpair`]
 
@@ -638,18 +649,7 @@ line or preceded by one of those symbols and doesn't have a colon at the end.
 
 ---
 
-# Making a Vimscript
-
-So you wanna make a vimscript?
-- plugins vs filetype plugin
-
-- :help write-plugin
-
-[.footer: `:help write-plugin, :help write-filetype-plugin, :help usr_41`]
-
----
-
-# File Structure
+# So you wanna make a plugin?
 
 - myplugin/autoload/mylib.vim => libraries
 - myplugin/compiler/ruby.vim => with compiler
@@ -659,8 +659,7 @@ So you wanna make a vimscript?
 - myplugin/plugin/myplugin.vim => "regular"
 - myplugin/syntax/ruby.vim => syntax rules
 
-[.footer: `:help write-plugin, :help write-filetype-plugin, :help
-write-compiler-plugin, :help write-library-script, :`]
+[.footer: `:help write-plugin, :help write-filetype-plugin, :help write-compiler-plugin, :help write-library-script`]
 
 ---
 
@@ -742,11 +741,10 @@ Plug 'dewyze/vim-ruby-block-helpers'
 This is in our dotfiles!
 
 ```
-
 ]b Next Block
 [b Previous Block
 ]p Parent Block
-]c Parnet Context (Rspec)
+]c Parent Context (Rspec)
 ]s Block Start
 ]e Block End
 ```
@@ -803,3 +801,5 @@ Check our your own vimrc!
 
 # Thank you!
 # Questions?
+
+Slides: dewyze/vimscript_presentation
